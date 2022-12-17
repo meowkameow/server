@@ -1,15 +1,13 @@
 import React from "react";
+import axios from 'axios';
 import './App.css';
 
 function App() {
   const [users, setUsers] = React.useState();
 
-  const getUsers =() =>{
-    fetch('https://6399f0b416b0fdad774ecea0.mockapi.io/users').then((res) =>{
-      res.json().then((result) =>{
-        setUsers(result);
-      });
-    });
+  const getUsers = async () =>{
+      const res = await axios.get('https://6399f0b416b0fdad774ecea0.mockapi.io/users');
+      setUsers(res.data);
   };
 
   return (
